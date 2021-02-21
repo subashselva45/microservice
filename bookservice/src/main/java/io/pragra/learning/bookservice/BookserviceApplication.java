@@ -8,6 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+import javax.management.MXBean;
 
 @EnableEurekaClient
 @SpringBootApplication
@@ -20,12 +23,16 @@ public class BookserviceApplication {
     }
 
     @Bean
-    CommandLineRunner runner(){
+    CommandLineRunner runner() {
         return args -> {
-            this.service.createBook(new Book(1L,"Learning Java","A", 300.00));
-            this.service.createBook(new Book(2L,"Learning python","B", 200.00));
-            this.service.createBook(new Book(3L,"Learning Angular","C", 100.00));
+            this.service.createBook(new Book(1L, "Learning Java", "A", 300.00));
+            this.service.createBook(new Book(2L, "Learning python", "B", 200.00));
+            this.service.createBook(new Book(3L, "Learning Angular", "C", 100.00));
+            this.service.createBook(new Book(4L, "Learning React", "D", 150.00));
         };
     }
-
+    @Bean
+    RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
 }

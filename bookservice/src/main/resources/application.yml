@@ -1,6 +1,14 @@
 spring:
   application:
     name: book-service
+  h2:
+    console:
+      path: /h2-console
+  datasource:
+    url: jdbc:h2:file:~/appdb
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
 server:
   port: 9000
 eureka:
